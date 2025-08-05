@@ -92,11 +92,12 @@
   padding: 0.625em;
   border-radius: 10px;
   margin: 0.625em 0;
-  gap: 0.3125em;
+  gap: 1em;
 }
 .confirm-order h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5em;
+  font-weight: 400;
 }
 
 .confirm-order p {
@@ -108,12 +109,16 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.3125em;
 }
 
 .order-info p,
 .order-info span {
   font-size: 1rem;
+}
+
+.total-div {
+  border-top: 1.8px solid black;
+  padding-top: 0.5em;
 }
 
 .btn {
@@ -129,12 +134,13 @@ btn:focus {
   border: none;
 }
 
-.confirm-btn {
+.confirm-btn,
+.modal-btn {
   background-color: #16db99;
   color: white;
   padding: 0.8em 1.25em;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   font-size: 1rem;
   margin-block: 0.5em;
@@ -157,9 +163,15 @@ btn:focus {
 .modal-container {
   background: white;
   padding: 1rem;
-  border-radius: 8px;
-  min-width: 90vw;
+  border-radius: 2px;
+  min-width: 80vw;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75em;
+  line-height: 1.5;
 }
 
 .close-btn {
@@ -173,11 +185,24 @@ btn:focus {
   cursor: pointer;
 }
 
+.modal h3 {
+  margin-bottom: 1.5em;
+}
+
 .modal input {
   width: 100%;
-  padding: 0.375em;
+  padding: 1.2em;
   margin-top: 0.25em;
   box-sizing: border-box;
+  border: 0.8px solid #757575;
+}
+
+.modal form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Smythe", sans-serif;
 }
 
 /* TABLET STYLES */
