@@ -63,7 +63,7 @@ class PizzaMenu {
                       <span>${item.name} X  ${item.quantity}</span>
                       <button class='btn' data-id=${item.id}>remove</button>
                   </div>
-                  <p>${item.price * item.quantity}</p>
+                  <p>$${item.price * item.quantity}</p>
               </div>
           `;
       this.confirmOrderDiv.appendChild(orderDetails);
@@ -71,10 +71,10 @@ class PizzaMenu {
 
     // Total price section
     const totalDiv = document.createElement("div");
-    totalDiv.classList.add("order-info");
+    totalDiv.classList.add("order-info", "total-div");
     totalDiv.innerHTML = `
           <p>Total Price:</p>
-          <p>${this.totalPrice}</p>
+          <p>$${this.totalPrice}</p>
       `;
     this.confirmOrderDiv.appendChild(totalDiv);
 
@@ -114,13 +114,12 @@ class PizzaMenu {
     modal.innerHTML = `
         <div class='modal-container'>
             <button class="close-modal close-btn">&times;</button>
-            <h3>Payment Information</h3>
+            <h3>Enter card details</h3>
             <form id="payment-form">
-                <label>Name on Card:<br><input type="text" required></label><br><br>
-                <label>Card Number:<br><input type="text" required maxlength="16"></label><br><br>
-                <label>Expiry:<br><input type="text" placeholder="MM/YY" required maxlength="5"></label><br><br>
-                <label>CVV:<br><input type="password" required maxlength="4"></label><br><br>
-                <button type="submit" style="background:green;color:white;padding:8px 16px;border:none;border-radius:4px;">Pay</button>
+                <input type="text" placeholder="Enter your name" name="name" id="name" aria-role="name" required><br>
+                <input type="text" placeholder="Enter your card number" id="card-number" aria-role="card-number" required maxlength="16"><br>
+                <input type="text" placeholder="Enter CVV" name="card-cvv" id="card-cvv" aria-role="card-cvv" required maxlength="5"><br>
+                <button type="submit" class="btn modal-btn">Pay</button>
             </form>
         </div>
     `;
@@ -130,12 +129,13 @@ class PizzaMenu {
     modal.querySelector(".close-modal").onclick = () => modal.remove();
     modal.querySelector("#payment-form").onsubmit = (e) => {
       e.preventDefault();
+      const name = document.querySelector("#name").value;
       modal.remove();
-      this.showSuccessModal();
+      this.showSuccessModal(name);
     };
   }
 
-  showSuccessModal() {
+  showSuccessModal(name = "") {
     // Remove any existing modal
     const oldModal = document.querySelector(".modal");
     if (oldModal) oldModal.remove();
@@ -146,13 +146,13 @@ class PizzaMenu {
         <div class='modal-container'>
             <button class="close-modal close-btn">&times;</button>
             <h3 style="color:green;">Payment Successful!</h3>
-            <p>Your order has been placed. Thank you!</p>
+            <p>Your order has been placed. Thank you ${name} for your purchase!</p>
         </div>
     `;
     document.body.appendChild(modal);
 
     modal.querySelector(".close-modal").onclick = () => modal.remove();
-    // Optionally, clear the order after success
+    // clear the order after success
     this.order = {};
     this.renderOrder();
   }
