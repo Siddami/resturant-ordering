@@ -27,12 +27,22 @@ The goal of this project is to simulate a real-world restaurant ordering experie
 
 ---
 
+## Additional Features
+
+1. Added unit counter for each item if selected mutiple times.
+
+2. Added close button on modal so modal can be closed without confirming order.
+
+3. Used modal for success message instead of paragraph message as design specified for better user experience.
+
+---
+
 ## What I Learned
 
 ### JavaScript Concepts
 
 - **Classes & Constructors**: Used to encapsulate menu and order logic, making the code modular and reusable.
-- **Setting Functions in Constructors**: Methods like `renderMenu`, `renderOrder`, and `showModal` are defined in the class for clear structure.
+- **Setting Functions in Constructors**: Methods like `renderMenu`, `renderOrder`, `showModal`, and `showSuccessModal` are defined in the class for clear structure.
 - **Form Handling & Verification**: Implemented a payment form inside a modal, with required fields and basic validation before submission.
 - **Event Handling**: Added event listeners for adding/removing items and handling form submission.
 - **Dynamic DOM Manipulation**: Created and updated HTML elements dynamically based on user actions.
@@ -47,15 +57,8 @@ The goal of this project is to simulate a real-world restaurant ordering experie
 
 ## How to Run the Project
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-2. **Start the development server:**
-   ```bash
-   npm start
-   ```
-3. Open your browser and go to the local server address (usually `http://localhost:5173`).
+1. Clone repository
+2. Open html file using any browser
 
 ---
 
@@ -70,4 +73,7 @@ If we succeed with this, it will give anyone who wants to become a software deve
 
 ---
 
-Happy Coding!
+## Future Improvements
+
+1. add minus icon to reduce item units
+2. improve accessibility with aria labels, sematic html among others.
